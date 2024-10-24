@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-<<<<<<< HEAD
         // 1. Cloner le dépôt
         stage('Checkout') {
             steps {
@@ -137,54 +136,18 @@ pipeline {
                 always {
                     bat 'curl "http://localhost:8081/OTHER/core/other/htmlreport/" > zap_report1.html'
                 }
-=======
-        stage('Checkout') {
-            steps {
-                // Cloner le dépôt
-                git 'https://github.com/Mohamed-KBIBECH/DevSecOps.git'
-            }
-        }
-        stage('Build') {
-            steps {
-                // Construire le projet Maven
-                sh 'mvn clean install'
-            }
-        }
-        stage('Test') {
-            steps {
-                // Exécuter les tests
-                sh 'mvn test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                // Déploiement (peut être remplacé par votre stratégie de déploiement)
-                sh 'echo "Déploiement de l\'application..."'
->>>>>>> 77a0bfd (add jenkins)
             }
         }
     }
 
     post {
         always {
-<<<<<<< HEAD
             archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
         }
         success {
             echo 'Le build a réussi et les tests ont été validés !'
         }
         failure {
-=======
-            // Archive les fichiers importants à la fin
-            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
-        }
-        success {
-            // Notifier en cas de succès
-            echo 'Le build a réussi !'
-        }
-        failure {
-            // Notifier en cas d'échec
->>>>>>> 77a0bfd (add jenkins)
             echo 'Le build a échoué.'
         }
     }
